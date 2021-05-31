@@ -1,0 +1,7 @@
+.background-image {
+  background-image: url("/images/background.png");
+  height: 100%;
+}
+button:hover {
+  background-color: coral;
+}

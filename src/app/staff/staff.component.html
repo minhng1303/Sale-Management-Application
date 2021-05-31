@@ -1,0 +1,269 @@
+<div class="container-fluid mx-0 px-0">
+  <div class="d-flex align-items-start justify-content-center">
+    <!-- -----------------------------------MAIN CONTENT------------------------------------------------>
+    <div class="col-sm-2 py-2 mx-auto px-4 bg-light border border-rounded">
+      <div
+        class="col-12 px-0 mb-2 mt-3"
+        style="border-bottom: 4px solid #17a2b8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-list-ul"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+          />
+        </svg>
+        <span class="ml-2">Tìm kiếm </span>
+      </div>
+      <div class="w-100 input-group input-group-sm my-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          [disabled]="editMode"
+          [class.disabled]="editMode"
+          [(ngModel)]="nameValue"
+          (input)="searchName()"
+        />
+      </div>
+
+      <div class="w-100 input-group input-group-sm my-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Phone"
+          [disabled]="editMode"
+          [class.disabled]="editMode"
+          [(ngModel)]="phoneValue"
+          (input)="searchPhone()"
+        />
+      </div>
+    </div>
+
+    <!-- -----------------------------------SIDEBAR------------------------------------------------>
+    <div class="col-10 px-0">
+      <div
+        class="
+          col-12
+          py-2
+          px-3
+          mb-1
+          bg-light
+          text-info
+          d-flex
+          align-items-center
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          fill="currentColor"
+          class="bi bi-people border border-info p-1"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"
+          />
+        </svg>
+        <span class="ml-2 font-weight-bold">Quản lí nhân viên </span>
+      </div>
+      <div
+        *ngIf="!editMode"
+        class="w-100 d-flex justify-content-start flex-wrap"
+      >
+        <div class="col-md-4 my-2" *ngFor="let staff of sortedStaff">
+          <div class="card">
+            <div class="card-body p-0">
+              <h3
+                class="
+                  card-title
+                  py-1
+                  px-2
+                  text-light
+                  bg-info
+                  d-flex
+                  justify-content-between
+                  align-items-baseline
+                "
+              >
+                <span class="">{{ staff.name }}</span>
+
+                <div class="d-flex align-items-baseline">
+                  <a class="text-light">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      fill="currentColor"
+                      class="bi bi-pencil-square cursor-pointer mx-1"
+                      viewBox="0 0 16 16"
+                      (click)="edit(staff)"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                  </a>
+                  <a class="text-light">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      fill="currentColor"
+                      class="bi bi-trash mx-1"
+                      viewBox="0 0 16 16"
+                      (click)="deleteStaff(staff)"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </h3>
+
+              <div class="card-text">
+                <div class="row">
+                  <div class="col-sm-12 col-md-3 pl-4 pr-0 pb-2">
+                    <img
+                      src="{{ staff.imageURL }}"
+                      alt="image"
+                      class="h-100 w-100"
+                    />
+                  </div>
+                  <div class="col-12 col-md-9">
+                    <p style="margin: 5px 0px">
+                      <span class="font-weight-bolder">Email: </span>
+                      {{ staff.email }}
+                    </p>
+                    <p style="margin: 5px 0px">
+                      <span class="font-weight-bolder">Số điện thoại: </span>
+                      <span *ngIf="staff.phone; else other_content">
+                        0{{ staff.phone }}</span
+                      >
+                      <ng-template #other_content></ng-template>
+                    </p>
+                    <p style="margin: 5px 0px">
+                      <span class="font-weight-bolder">Địa chỉ: </span>
+                      {{ staff.address }}
+                    </p>
+                    <p style="margin: 5px 0px">
+                      <span class="font-weight-bolder">Giới tính: </span>
+                      {{ staff.gender }}
+                    </p>
+                    <p style="margin: 5px 0px">
+                      <span class="font-weight-bolder">D.O.B: </span>
+                      {{ staff.dob | date: "MMM d, y" }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ---------END---------->
+
+      <form
+        *ngIf="editMode"
+        class="my-3 w-50 mx-auto bg-light rounded p-4"
+        [formGroup]="profileForm"
+        (ngSubmit)="updateStaff()"
+      >
+        <div class="form-group col-sm-12">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="account" />
+        </div>
+
+        <div class="form-group col-sm-12">
+          <label>Tên</label>
+          <input type="text" class="form-control" formControlName="name" />
+        </div>
+
+        <div class="form-group col-sm-12">
+          <label for="inputPhone">Số điện thoại</label>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="phone"
+            id="inputPhone"
+          />
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="inputPhone">Địa chỉ</label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="address"
+            id="inpuAddress"
+          />
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between col-sm-12"
+        >
+          <select
+            class="form-select form-select-lg col-sm-4 p-2"
+            aria-label=".form-select-lg example"
+            formControlName="gender"
+          >
+            <option value="Male">Nam</option>
+            <option value="Female">Nữ</option>
+          </select>
+
+          <input
+            placeholder="Date of Birth"
+            class="form-control col-sm-7"
+            type="date"
+            formControlName="dob"
+            id="inputDOB"
+          />
+        </div>
+
+        <div class="form-group col-sm-12">
+          <label for="inputURL">Upload ảnh</label>
+          <input
+            formControlName="imageURL"
+            class="form-control"
+            type="file"
+            (change)="upload($event)"
+            accept=".png,.jpg"
+          />
+        </div>
+
+        <hr />
+        <div class="col-12 justify-content-end d-flex" *ngIf="editMode">
+          <button
+            type="submit"
+            mat-raised-button
+            class="btn bg-success mx-1 text-light"
+          >
+            Lưu
+          </button>
+          <button
+            mat-raised-button
+            class="btn bg-danger mx-1 text-light"
+            (click)="goBack()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- ----Form------->
+  </div>
+</div>

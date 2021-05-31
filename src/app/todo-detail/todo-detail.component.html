@@ -1,0 +1,22 @@
+<div class="container my-0" @fade>
+  <table class="table w-100 table-bordered table-hover shadow-lg">
+    <thead class="thead-light">
+      <tr class="bg-light" style="background-color: rgb(212, 212, 212)">
+        <th scope="col">Tên đồ uống</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Tổng cộng</th>
+        <th scope="col">Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody class="bg-light">
+      <tr *ngFor="let item of orderDetail">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price | handlePrice }}</td>
+        <td>{{ item.total | handlePrice }}</td>
+        <td>{{ item.note }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

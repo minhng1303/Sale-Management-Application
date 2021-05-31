@@ -1,0 +1,93 @@
+button {
+  border-radius: 12px;
+  padding: 4px;
+}
+.list-group-item:hover {
+  background-color: #339fff;
+}
+table {
+  font-size: small;
+}
+.disabled {
+  background-color: rgb(156 151 151) !important;
+  color: whitesmoke;
+  border: rgb(156 151 151);
+}
+
+.room {
+  height: 75px;
+  border-radius: 5%;
+  background-color: #808080;
+}
+.isOrdered {
+  background-color: rgba(255, 0, 0, 0.7) !important;
+}
+.isActive {
+  background-color: #3b5998 !important;
+}
+
+.room:hover {
+  background-color: #3b5998;
+}
+
+.btn-custom {
+  background-color: #808080;
+}
+
+#client-box {
+  border: none;
+}
+.footer-box {
+  width: 32%;
+  background-color: white;
+  border: none;
+}
+.search-box {
+  position: relative;
+}
+.search-list {
+  position: absolute;
+}
+.main-order {
+  height: 95vh;
+}
+.mt-20 {
+  margin-top: 120px;
+}
+.border-none {
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+.wid-100 {
+  width: 100px;
+}
+.wid-150 {
+  width: 150px;
+}
+
+.pt-31 {
+  padding-top: 1.1rem !important;
+}
+.list {
+  overflow: scroll;
+}
+
+li {
+  list-style-type: none;
+}
+.list-fixed {
+  height: 300px;
+}
+
+.list-fixed {
+  display: block;
+  height: auto;
+  max-height: 500px;
+  overflow-y: scroll;
+}

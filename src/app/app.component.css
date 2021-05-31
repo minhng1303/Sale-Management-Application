@@ -1,0 +1,14 @@
+.todo-container {
+  border: 1px solid #ccc;
+  padding: 15px 30px;
+}
+
+.text-strikethrough {
+  text-decoration: line-through;
+}
+
+.todo-delete-btn {
+  font-size: 24px;
+}
+.login-form {
+}

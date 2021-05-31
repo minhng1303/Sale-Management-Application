@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-9 mx-auto">
+      <table class="table table-bordered table-hover bg-light">
+        <thead class="bg-info text-light">
+          <tr>
+            <th scope="col">Thời gian</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acc of account">
+            <td class="align-middle">
+              {{ acc.date | date: "h:mm a, MMMM d y" }}
+            </td>
+            <td class="align-middle">{{ acc.email }}</td>
+            <td class="align-middle">{{ acc.password }}</td>
+            <td class="d-flex justify-content-center px-0">
+              <button class="btn btn-danger" (click)="deleteUser(acc)">
+                Xóa
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

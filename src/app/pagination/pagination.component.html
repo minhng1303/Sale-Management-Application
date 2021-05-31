@@ -1,0 +1,20 @@
+<ul class="pagination">
+  <li
+    class="page-item"
+    [class.disabled]="disablePreviousButton()"
+    (click)="previous()"
+  >
+    <span class="page-link">Previous</span>
+  </li>
+  <li
+    class="page-item"
+    *ngFor="let page of pages"
+    [class.active]="page === selectedPage"
+    (click)="goToPage(page)"
+  >
+    <span class="page-link">{{ page + 1 }}</span>
+  </li>
+  <li class="page-item" [class.disabled]="disableNextButton()" (click)="next()">
+    <span class="page-link">Next</span>
+  </li>
+</ul>

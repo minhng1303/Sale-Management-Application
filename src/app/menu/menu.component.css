@@ -1,0 +1,25 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.border-grey {
+  border: 0.5px solid gray;
+}
+ul.drinkrow {
+  background-color: white;
+}
+ul.drinkrow:hover {
+  background-color: lightskyblue !important;
+}
+a:hover {
+  cursor: pointer;
+}
+.disabled {
+  background-color: lightgray !important;
+  color: white;
+}
+.active {
+  /* outline: coral 3px; */
+  box-shadow: 0 0 3pt 2pt coral;
+}

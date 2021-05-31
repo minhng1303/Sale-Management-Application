@@ -1,0 +1,22 @@
+* {
+  font-size: 14px;
+}
+.table-fixed tbody {
+  display: block;
+  height: 500px;
+  overflow-y: scroll;
+}
+.header-row {
+  padding-right: 19px;
+}
+.table-fixed tr {
+  display: block;
+  width: 100%;
+}
+.table-fixed th {
+  border-top: none;
+  border-bottom: none;
+}
+.table-fixed td {
+  border-top: none;
+}

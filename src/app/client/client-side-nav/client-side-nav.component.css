@@ -1,0 +1,5 @@
+.disabled {
+  background-color: lightgray !important;
+  border: lightgray;
+  color: whitesmoke;
+}

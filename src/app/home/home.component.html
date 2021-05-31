@@ -1,0 +1,281 @@
+<div class="container-fluid m-0 p-0 mx-auto">
+  <div class="row main-order col-12 p-0 m-0 justify-content-between">
+    <div class="col-sm-12 row col-md-7 mx-0 px-0 bg-light">
+      <!------------------------------ Search Bar-------------------------------------------------->
+      <div
+        class="align-self-start input-group px-0 col-12 d-flex flex-wrap"
+        style="height: 37px"
+      >
+        <input
+          type="text"
+          [formControl]="searchDrinkValue"
+          placeholder="Tìm đồ uống"
+          class="form-control col-10 dropdown dropdown-toggle py-0"
+        />
+        <!-- (click)="showAcc = !showAcc" (blur)="showAcc = false" -->
+        <div
+          class="
+            bg-success
+            col-2
+            text-light
+            d-flex
+            justify-content-center
+            align-items-center
+          "
+          style="height: auto"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="d-flex col-5 p-0 ml-3 dropdown-menu dropdown-menu-left"
+          [class.show]="searchD"
+          *ngIf="searchD"
+        >
+          <ul class="list-group w-100 list-fixed" style="z-index: 99">
+            <li
+              class="list-group-item d-flex justify-content-between"
+              *ngFor="let drink of sortedDrink"
+              (click)="chooseDrink(drink)"
+            >
+              <a> {{ drink.name }} </a>
+              <span>{{ drink.price | handlePrice }} </span>
+            </li>
+          </ul>
+        </div>
+
+        <table class="table col-12 px-0 bg-light overflow-auto">
+          <thead>
+            <tr class="text-center w-100">
+              <th scope="col" class="border-right">Tên Đồ Uống</th>
+              <th style="width: 150px" class="border-right" scope="col">
+                Số lượng
+              </th>
+              <th scope="col" class="wid-100 ml-auto border-right">Giá</th>
+              <th scope="col" class="wid-100 ml-auto">Tổng cộng</th>
+              <!-- <th scope="col">Note</th> -->
+            </tr>
+          </thead>
+          <tbody *ngIf="onSelectTable.orderList.length > 0 || []">
+            <tr class="list" *ngFor="let item of onSelectTable.orderList">
+              <td class="border-none">
+                <div>{{ item.name | uppercase }}</div>
+                <small>
+                  <input
+                    (blur)="addNote(note.value, item)"
+                    #note
+                    class="bg-light border-none"
+                    type="text"
+                    placeholder="Ghi chú..."
+                    *ngIf="!(item.note.length > 0)"
+                    style="font-size: 11px"
+                  />
+                  <input
+                    (blur)="addNote(note.value, item)"
+                    #note
+                    class="bg-light border-none"
+                    type="text"
+                    [value]="item.note"
+                    style="font-size: 11px"
+                    *ngIf="item.note.length > 0"
+                  />
+                </small>
+              </td>
+              <td class="wid-150 d-flex justify-content-center border-none">
+                <!-- <span #quantity class="d-flex justify-content-center"> -->
+
+                <input
+                  class="w-75 mx-1 text-center form-control"
+                  #quantity
+                  type="number"
+                  name="quantity"
+                  min="1"
+                  [(ngModel)]="item.quantity"
+                  (change)="calculate($event, item)"
+                />
+                <!-- </span> -->
+              </td>
+              <td class="text-center wid-100 pt-31 border-none">
+                {{ item.price | handlePrice }}
+              </td>
+              <td class="text-center wid-100 pt-31 border-none">
+                <span> {{ item.total | handlePrice }} </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-x-circle-fill text-danger ml-auto"
+                  (click)="deleteItem(item)"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+                  />
+                </svg>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="
+          d-flex
+          col-12
+          pr-3
+          pl-0
+          align-self-end
+          justify-content-between
+          flex-wrap
+        "
+      >
+        <div class="d-flex col-12 px-0 mb-1 justify-content-between">
+          <div
+            *ngIf="!onSelectTable.client.name"
+            class="col-4 mx-1 border"
+            style="height: 100"
+          >
+            <input
+              id="client-box"
+              type="text"
+              [formControl]="searchClientValue"
+              placeholder="Tìm khách hàng"
+              class="
+                form-control
+                h-100
+                w-100
+                bg-light
+                dropdown dropdown-toggle
+                py-0
+              "
+              style="outline: none"
+            />
+          </div>
+
+          <div
+            class="bg-light p-0 dropdown-menu dropdown-menu-left ml-3"
+            [class.show]="searchC"
+            *ngIf="searchC"
+          >
+            <ul
+              class="list-group-item my-0"
+              *ngFor="let client of sortedClient"
+              (click)="chooseClient(client)"
+            >
+              <li>{{ client.name }}</li>
+            </ul>
+          </div>
+
+          <div
+            *ngIf="onSelectTable.client.name"
+            class="text-center col-4 px-0 border"
+            style="height: 100"
+          >
+            <div class="w-100 h-100 mt-1">
+              <div class="d-flex align-items-baseline justify-content-end m-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-x-square mr-1"
+                  viewBox="0 0 16 16"
+                  (click)="resetClient()"
+                >
+                  <path
+                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                  />
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </div>
+              <div class="my-auto">
+                <span class="mx-auto"> {{ onSelectTable.client.name }} </span>
+              </div>
+              <div #point class="mb-1">
+                {{ onSelectTable.client.point }}
+              </div>
+            </div>
+          </div>
+          <!-- -----------------------------TOTAL BOX -------------------------->
+          <div class="col-4 mx-1 px-0">
+            <div id="total" class="btn btn-info h-100 w-100">
+              <div class="text-center">Tổng cộng</div>
+              <div>
+                {{ onSelectTable.total | handlePrice }}
+              </div>
+            </div>
+          </div>
+          <!-- -----------------------------PAY BOX -------------------------->
+          <div
+            class="col-4 mx-1 px-0 bg-danger rounded"
+            [class.disabled]="onSelectTable.orderList.length == 0"
+          >
+            <button
+              type="button"
+              class="w-100 h-100 btn btn-danger"
+              (click)="openDialog()"
+              [class.disabled]="onSelectTable.orderList.length == 0"
+              [disabled]="onSelectTable.orderList.length == 0"
+            >
+              Thanh Toán
+            </button>
+          </div>
+        </div>
+
+        <!----------------------- CLIENT RESULT BOX--------------------------->
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------->
+    <div class="col-sm-12 col-md-5 pb-4 px-0 bg-light border">
+      <div class="text-center">
+        <div
+          class="
+            bg-primary bg-info
+            border
+            col-12
+            mb-3
+            p-3
+            font-weight-bolder
+            text-center text-light
+          "
+        >
+          Bàn
+        </div>
+      </div>
+      <!-- -----------------------------TABLE LIST---------------------------------------------------->
+      <div class="order-table justify-content-center">
+        <div class="mt-2 w-100 d-flex justify-content-between flex-wrap">
+          <div
+            class="col-sm-2 btn border rounded mr-1 mt-1 p-0 text-light room"
+            *ngFor="let table of tables"
+            (click)="selectedTable(table)"
+            [class.isActive]="onSelectTable.number === table.number"
+            [class.isOrdered]="table.orderList.length > 0"
+          >
+            <div class="border-bottom w-100">
+              {{ table.number }}
+            </div>
+
+            <div *ngIf="table.total > 0" class="my-2">
+              {{ totalRender(table) | handlePrice }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

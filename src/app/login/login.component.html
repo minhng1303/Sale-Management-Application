@@ -1,0 +1,74 @@
+<!-- ---------------------------------LOGIN FORM ------------------------------------------------- -->
+<div class="container">
+  <div
+    class="
+      row
+      justify-content-between
+      p-4
+      bg-light
+      shadow-lg
+      mx-auto
+      mt-5
+      rounded
+      col-8
+    "
+  >
+    <div class="col-md-6">
+      <img
+        class="col-12"
+        src="https://img.icons8.com/bubbles/2x/user-male.png"
+        alt="image"
+      />
+    </div>
+    <div class="col-md-6">
+      <h5 class="text-center">Đăng nhập</h5>
+      <form (ngSubmit)="login()">
+        <div class="form-group p-2 rounded my-1">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="email"
+            placeholder="Email"
+            required
+            (input)="clearErrorMessage()"
+          />
+        </div>
+        <div class="form-group p-2 rounded my-0">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            [(ngModel)]="password"
+            placeholder="Mật khẩu"
+            required
+            (input)="clearErrorMessage()"
+          />
+          <div class="pl-1 register mt-2">
+            <span
+              >Bạn chưa có tài khoản?
+              <a
+                class="text-primary"
+                routerLink="/register"
+                style="cursor: pointer"
+                >Đăng kí
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="form-group px-2">
+          <p *ngIf="errorMessage.length > 0" class="text-danger">
+            {{ errorMessage }}
+          </p>
+
+          <p *ngIf="error.message.length > 0" class="text-danger">
+            {{ error.message }}
+          </p>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-info ml-auto">Đăng nhập</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

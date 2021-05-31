@@ -1,0 +1,10 @@
+.disabled {
+  background-color: lightgray !important;
+  color: whitesmoke;
+  border: lightgray;
+}
+.disabled:hover {
+  background-color: lightgray !important;
+  color: whitesmoke;
+  border: lightgray;
+}

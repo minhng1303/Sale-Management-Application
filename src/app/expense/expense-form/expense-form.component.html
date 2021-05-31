@@ -1,0 +1,122 @@
+<form
+  class="col-12 row flex-wrap"
+  [formGroup]="expenseForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group col-12">
+    <!-- NAME INPUT  -->
+    <label for="exampleInputEmail1"
+      >Tên chi tiêu <span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      placeholder="Enter expense"
+      formControlName="name"
+      (blur)="log()"
+    />
+
+    <div role="alert" *ngIf="get('name').touched && get('name').invalid">
+      <small class="text-danger" *ngIf="get('name').errors.required"
+        >Tên quá ngắn</small
+      >
+      <small class="text-danger" *ngIf="get('name').errors.maxlength"
+        >Tên quá dài</small
+      >
+    </div>
+  </div>
+  <!-- --------------------------------------------PRICE INPUT------------------------------------------------ -->
+  <div class="form-group col-6">
+    <label for="exampleInputEmail1"
+      >Chi phí <span class="text-danger">*</span></label
+    >
+    <input
+      type="number"
+      class="form-control"
+      name="price"
+      placeholder="Enter price"
+      formControlName="price"
+      (blur)="log()"
+    />
+    <small *ngIf="errorMessage.length > 1" class="text-danger">
+      {{ errorMessage }}</small
+    >
+    <div
+      role="alert"
+      *ngIf="get('quantity').touched && get('quantity').invalid"
+    >
+      <small class="text-danger" *ngIf="get('quantity').errors.required"
+        >Bắt buộc</small
+      >
+    </div>
+  </div>
+  <div class="form-group col-6">
+    <label>Số lượng<span class="text-danger">*</span></label>
+    <input
+      type="number"
+      class="form-control"
+      name="quantity"
+      placeholder="Enter quantity"
+      formControlName="quantity"
+      (blur)="log()"
+    />
+    <!-- <small *ngIf="errorMessage.length > 1" class="text-danger">
+      {{ errorMessage }}</small
+    > -->
+    <div
+      role="alert"
+      *ngIf="get('quantity').touched && get('quantity').invalid"
+    >
+      <small class="text-danger" *ngIf="get('quantity').errors.required"
+        >Bắt buộc</small
+      >
+    </div>
+  </div>
+  <mat-form-field appearance="fill" class="mt-2 col-4">
+    <mat-label>Hạng mục</mat-label>
+    <mat-select formControlName="category">
+      <mat-option *ngFor="let cat of category" [value]="cat">
+        {{ cat }}
+      </mat-option>
+    </mat-select>
+    <div
+      role="alert"
+      *ngIf="get('category').touched && get('category').invalid"
+    >
+      <small class="text-danger" *ngIf="get('category').errors.required"
+        >Bắt buộc</small
+      >
+    </div>
+  </mat-form-field>
+
+  <!----------------------------------------- QUANTITY INPUT --------------------------------------------------->
+
+  <div class="mt-3 col-12 d-flex justify-content-end">
+    <button
+      class="mx-1 bg-danger text-light"
+      mat-raised-button
+      (click)="cancel($event)"
+    >
+      Cancel
+    </button>
+    <button
+      class="mx-1 bg-success text-light"
+      type="submit"
+      mat-raised-button
+      [class.disabled]="!expenseForm.valid || data.editMode"
+      [disabled]="!expenseForm.valid || data.editMode"
+      *ngIf="!data.editMode"
+    >
+      Thêm
+    </button>
+    <button
+      class="mx-1 bg-primary text-light"
+      mat-raised-button
+      (click)="updateClient(selectedExpense)"
+      *ngIf="data.editMode"
+    >
+      Cập nhật
+    </button>
+  </div>
+</form>

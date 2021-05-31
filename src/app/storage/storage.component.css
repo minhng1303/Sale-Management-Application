@@ -1,0 +1,40 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.border-grey {
+  border: 0.5px solid gray;
+}
+ul.drinkrow {
+  background-color: white;
+}
+.border-none {
+  border: none;
+  background-color: white;
+}
+input:focus {
+  outline: none;
+}
+.table-fixed tbody {
+  display: block;
+  height: 500px;
+  overflow-y: scroll;
+}
+.table-fixed tr {
+  display: block;
+  width: 100%;
+}
+.header-row {
+  padding-right: 19px;
+}
+.w-95 {
+  width: 98%;
+}
+
+.table-fixed th {
+  border: none;
+}
+.table-fixed td {
+  border-top: none;
+}

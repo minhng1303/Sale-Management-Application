@@ -1,0 +1,9 @@
+.disabled {
+  background-color: lightgray;
+  color: whitesmoke;
+  border: lightgray;
+}
+span,
+div {
+  font-size: 14px;
+}

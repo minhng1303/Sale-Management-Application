@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row align-items-start mt-3">
+    <div class="col-3 bg-light pt-2 pb-4">
+      <div
+        class="mt-4 pl-1 d-flex flex-wrap align-items-center"
+        style="border-bottom: 4px solid #17a2b8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-list-ul"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+          />
+        </svg>
+        <span class="ml-2">Tìm kiếm </span>
+      </div>
+      <input
+        placeholder="Tên tài khoản"
+        class="form-control col-12 mt-2"
+        name="search"
+        [(ngModel)]="accountName"
+        (input)="searchByName()"
+      />
+    </div>
+    <div class="col-sm-9">
+      <table class="table table-bordered table-hover bg-light">
+        <thead>
+          <tr class="bg-info text-light text-center">
+            <th scope="col">Thời gian</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acc of account">
+            <td class="align-middle">
+              {{ acc.date | date: "h:mm a, MMM d y" }}
+            </td>
+            <td class="align-middle">{{ acc.email }}</td>
+            <td class="align-middle">{{ acc.password }}</td>
+            <td class="d-flex justify-content-center">
+              <button
+                mat-raised-button
+                class="btn-success"
+                (click)="makeAdmin(acc)"
+                [disabled]="acc.isAdmin"
+              >
+                Thêm Admin
+              </button>
+              <button
+                mat-raised-button
+                class="btn-danger mx-1"
+                (click)="removeAdmin(acc)"
+                [disabled]="!acc.isAdmin"
+              >
+                Xóa Admin
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

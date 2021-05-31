@@ -1,0 +1,14 @@
+<button class="btn btn-danger my-2" (click)="cancel()">Cancel</button>
+<div class="row my-2">
+  <div
+    class="col-12 px-1 d-flex flex-wrap"
+    *ngFor="let item of selectedDrink.ingredients"
+  >
+    <input class="col-9 mx-1 my-1 form-control" value="{{ item.name }}" />
+    <input class="col-2 my-1 form-control" value="{{ item.quantity }}" />
+  </div>
+  <textarea style="height: 100px" class="col-11 ml-1 my-1 form-control"
+    >{{ selectedDrink.description }}  
+</textarea
+  >
+</div>

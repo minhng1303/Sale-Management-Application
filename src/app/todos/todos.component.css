@@ -1,0 +1,46 @@
+.todo-container {
+  /* border: 1px solid #ccc;
+    padding: 15px 30px; */
+}
+
+.text-strikethrough {
+  text-decoration: line-through;
+}
+
+.todo-delete-btn {
+  font-size: 24px;
+}
+
+.mat-row {
+  background-color: #ffffff;
+}
+
+.mat-row:hover {
+  background-color: lightblue;
+}
+
+.mat-header-cell {
+  font-weight: 600;
+  color: white;
+  font-size: small;
+}
+
+.table-fixed tbody {
+  display: block;
+  height: 500px;
+  overflow-y: scroll;
+}
+.table-fixed tr {
+  display: block;
+  width: 100%;
+}
+.w-95 {
+  width: 98%;
+}
+
+.table-fixed th {
+  border: none;
+}
+.table-fixed td {
+  border-top: none;
+}

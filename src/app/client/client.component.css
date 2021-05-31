@@ -1,0 +1,28 @@
+.delete-btn,
+.edit-btn {
+  font-size: 14px;
+}
+.disabled,
+.disabled:hover {
+  background-color: gray !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.table-fixed tbody {
+  display: block;
+  overflow-y: scroll;
+  min-height: 300px;
+  height: 500px;
+}
+.table-fixed tr {
+  display: block;
+  width: 100%;
+}
+.table-fixed th {
+  border: none;
+}

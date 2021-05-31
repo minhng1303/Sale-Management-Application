@@ -1,0 +1,172 @@
+<div class="container-fluid p-0 m-0">
+  <div class="col-12 px-3 py-3 d-flex justify-content-center">
+    <!-- ---CARD---- -->
+    <div
+      class="mx-1 bg-white px-0 py-2 row align-items-center rounded"
+      style="width: 22.5%"
+    >
+      <div class="d-flex py-1 px-0 justify-content-center col-12">
+        <div class="col-2 row px-0 ml-1">
+          <span class="align-self-center bg-light border p-2 rounded-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-tag"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"
+              />
+              <path
+                d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="col-10">
+          <h5 class="text-dark my-0">{{ orderTwoDay.length }}</h5>
+          <small class="text-secondary">ĐƠN HÀNG</small>
+        </div>
+      </div>
+    </div>
+    <!-- -----CARD------->
+    <div
+      class="mx-1 bg-white px-0 py-2 row align-items-center rounded"
+      style="width: 22.5%"
+    >
+      <div class="d-flex py-1 px-0 justify-content-center col-12">
+        <div class="col-2 row px-0 ml-1">
+          <span class="align-self-center bg-light border p-2 rounded-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-cart"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="col-10">
+          <h5 class="text-dark my-0">{{ todayRevenue | handlePrice }}</h5>
+          <small class="text-secondary">DOANH THU NGÀY</small>
+        </div>
+      </div>
+    </div>
+    <!-- -----CARD------->
+    <div
+      class="mx-1 bg-white px-0 py-2 row align-items-center rounded"
+      style="width: 22.5%"
+    >
+      <div class="d-flex py-1 px-0 justify-content-center col-12">
+        <div class="col-2 row px-0 ml-1">
+          <span class="align-self-center bg-light border p-2 rounded-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-layers"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="col-10">
+          <h5 class="text-dark my-0">{{ activeTable }}</h5>
+          <small class="text-secondary">BÀN ĐANG SỬ DỤNG </small>
+        </div>
+      </div>
+    </div>
+    <!-- -----CARD------->
+    <div
+      class="mx-1 bg-white px-0 py-2 row align-items-center rounded"
+      style="width: 22.5%"
+    >
+      <div class="d-flex py-1 px-0 justify-content-center col-12">
+        <div class="col-2 row px-0 ml-1">
+          <span class="align-self-center bg-light border p-2 rounded-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-tag"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"
+              />
+              <path
+                d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="col-10">
+          <h5 class="text-dark my-0">{{ pointValue }}</h5>
+          <small class="text-secondary">ĐIỂM SỬ DỤNG </small>
+        </div>
+      </div>
+    </div>
+    <!-- -----CARD------->
+  </div>
+
+  <div class="row mt-2 mx-auto" style="width: 92%">
+    <div class="col-9 rounded py-3">
+      <div class="col-12 py-3 rounded bg-light">
+        <span class="col-sm-12 text-secondary font-weight-bold">
+          DOANH THU THÁNG 5
+        </span>
+        <app-day-chart class="col-sm-10 bg-light p-3 mb-5 mt-3"></app-day-chart>
+      </div>
+      <div class="col-12 py-3 d-flex justify-content-between mt-2 px-0">
+        <div class="col-4 rounded py-2 text-center bg-light">
+          <span>SẢN PHẨM BÁN CHẠY </span>
+          <ul class="mt-2 col-12 px-0">
+            <li
+              id="best-seller"
+              *ngFor="let drink of drinkResult"
+              class="d-flex justify-content-between mt-1 p-1"
+            >
+              <span>{{ drink.name }}</span>
+              <button class="btn btn-danger px-1 py-0">
+                {{ drink.quantity }}
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-light rounded px-2 py-3" style="width: 65%">
+          <app-bar-chart class="col-sm-10 bg-light my-3"></app-bar-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mt-3">
+      <div class="col-12 d-flex align-items-center bg-light rounded p-2">
+        <span class="text-info font-weight-bold mr-1"> HOTLINE:</span>
+        <span class="text-danger"> 0898577244 </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-telephone ml-auto"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

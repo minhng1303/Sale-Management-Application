@@ -1,0 +1,7 @@
+.center {
+  position: absolute;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,151 @@
+<div class="container-fluid bg-light">
+  <div class="mt-4 pl-1 d-flex flex-wrap align-items-center">
+    <div class="col-12 px-0 mb-2" style="border-bottom: 4px solid #17a2b8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-list-ul"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+        />
+      </svg>
+      <span class="ml-2">Tìm kiếm </span>
+    </div>
+    <input
+      placeholder="Tên khách hàng"
+      class="form-control col-12 mt-2"
+      name="search"
+      [(ngModel)]="clientName"
+      (input)="searchClient()"
+    />
+    <input
+      placeholder="Số điện thoại"
+      class="form-control col-12 mt-2"
+      name="search"
+      [(ngModel)]="clientPhone"
+      (input)="searchClientPhone()"
+    />
+  </div>
+
+  <div class="mt-4 pl-1 d-flex flex-wrap align-items-center">
+    <div class="col-12 px-0 mb-2" style="border-bottom: 4px solid #17a2b8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-list-ul"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+        />
+      </svg>
+      <span class="ml-2">Thêm khách hàng </span>
+    </div>
+    <form
+      class="bg-light px-0 py-2 col-12"
+      [formGroup]="subscribeForm"
+      (ngSubmit)="
+        onSubmit(subscribeForm.value.name, subscribeForm.value.phone, $event)
+      "
+    >
+      <div class="form-group">
+        <!-- NAME INPUT  -->
+        <label for="exampleInputEmail1"
+          >Tên khách hàng <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          maxlength="30"
+          minlength="6"
+          placeholder="Nhập tên"
+          formControlName="name"
+        />
+
+        <div *ngIf="get('name').touched && get('name').invalid">
+          <small class="text-danger" *ngIf="get('name').errors.required"
+            >Bắt buộc <br
+          /></small>
+
+          <small class="text-danger" *ngIf="get('name').errors.maxlength"
+            >Tên quá dài <br
+          /></small>
+
+          <small class="text-danger" *ngIf="get('name').errors.minlength"
+            >Tên quá ngắn <br
+          /></small>
+
+          <small class="text-danger" *ngIf="get('name').errors.pattern"
+            >Không chứa kí tự đặc biệt hoặc số</small
+          >
+        </div>
+      </div>
+      <!----------------------------------------- PHONE INPUT --------------------------------------------------->
+      <label for="exampleInputEmail1"
+        >Số điện thoại <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        name="number"
+        maxlength="11"
+        placeholder="Nhập số điện thoại"
+        formControlName="phone"
+        (blur)="log()"
+      />
+      <small *ngIf="errorMessage.length > 1" class="text-danger">
+        {{ errorMessage }}</small
+      >
+      <div role="alert" *ngIf="get('phone').touched && get('phone').invalid">
+        <small class="text-danger" *ngIf="get('phone').errors.required"
+          >Bắt buộc <br
+        /></small>
+        <small class="text-danger" *ngIf="get('phone').errors.maxlength"
+          >Số điện thoại quá dài <br />
+        </small>
+        <small class="text-danger" *ngIf="get('phone').errors.pattern"
+          >Phải nhập số</small
+        >
+      </div>
+      <div class="mt-3 d-flex justify-content-end">
+        <button
+          *ngIf="!editMode"
+          class="mx-1 mx-1 bg-info text-light"
+          type="submit"
+          mat-raised-button
+          [class.disabled]="!subscribeForm.valid"
+          [disabled]="!subscribeForm.valid"
+        >
+          Thêm
+        </button>
+        <button
+          class="mx-1 mx-1 bg-danger text-light"
+          mat-raised-button
+          (click)="cancel()"
+          *ngIf="editMode"
+        >
+          Cancel
+        </button>
+        <button
+          class="mx-1 mx-1 bg-success text-light"
+          mat-raised-button
+          (click)="updateClient(selectedClient)"
+          *ngIf="editMode"
+          [class.disabled]="!subscribeForm.valid"
+          [disabled]="!subscribeForm.valid"
+        >
+          Cập nhật
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

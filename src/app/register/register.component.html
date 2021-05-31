@@ -1,0 +1,98 @@
+<div class="container">
+  <div
+    class="
+      row
+      justify-content-center
+      p-4
+      bg-light
+      shadow-lg
+      mx-auto
+      mt-5
+      rounded
+      col-8
+    "
+  >
+    <div class="col-md-6">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="
+          register(registerForm.value.email, registerForm.value.password)
+        "
+      >
+        <h2 class="text-center">Đăng kí tài khoản</h2>
+        <div class="form-group p-2 my-1">
+          <input
+            name="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"
+          />
+          <div
+            class="text-danger"
+            *ngIf="get('email').touched && get('email').invalid"
+          >
+            <small *ngIf="get('email').errors.required"> Bắt buộc</small>
+            <small *ngIf="get('email').errors.email"
+              >Bắt buộc phải điền email</small
+            >
+          </div>
+        </div>
+
+        <div class="form-group p-2 my-1">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Mật khẩu"
+          />
+          <div
+            class="text-danger"
+            *ngIf="get('password').touched && get('password').invalid"
+          >
+            <small *ngIf="get('password').errors.required"> Bắt buộc</small>
+            <small *ngIf="get('password').errors.minlength">
+              Độ dài tối thiểu là 6</small
+            >
+            <small *ngIf="get('password').errors.maxlength">
+              Độ dài tối đa là 22</small
+            >
+          </div>
+          <div class="register pl-1 mt-2">
+            <span
+              >Bạn có tài khoản?
+              <a
+                routerLink="/login"
+                class="text-primary"
+                style="cursor: pointer"
+                >Đăng nhập
+              </a></span
+            >
+          </div>
+          <div class="pl-1 form-group">
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+              {{ errorMessage }}
+            </p>
+
+            <p *ngIf="error.message.length > 0" class="text-danger">
+              {{ error.message }}
+            </p>
+          </div>
+        </div>
+        <div class="form-group mt-1 mb-2 row">
+          <button
+            type="submit"
+            class="btn btn-info mx-auto"
+            [disabled]="!registerForm.valid"
+            [class.disabled]="!registerForm.valid"
+          >
+            Đăng kí
+          </button>
+        </div>
+        <p *ngIf="message.length > 0" class="text-primary col-12">
+          {{ message }}
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

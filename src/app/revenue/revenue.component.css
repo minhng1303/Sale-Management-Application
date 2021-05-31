@@ -1,0 +1,7 @@
+#best-seller:nth-child(odd) {
+  background-color: lightgray;
+}
+
+#best-seller:nth-child(event) {
+  background-color: whitesmoke;
+}

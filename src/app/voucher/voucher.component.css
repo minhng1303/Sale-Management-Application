@@ -1,0 +1,6 @@
+.disabled,
+.disabled:hover {
+  background-color: gray !important;
+  border: gray;
+  color: white;
+}

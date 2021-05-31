@@ -1,0 +1,39 @@
+<div>
+  <div
+    class="
+      content-container
+      d-flex
+      justify-content-end
+      align-items-center
+      flex-wrap
+      mb-2
+    "
+  >
+    <h4 class="d-flex align-items-center col-12 text-center">
+      Bạn có chắc?
+      <mat-icon id="close-icon " class="ml-auto" (click)="closeDialog()"
+        >close</mat-icon
+      >
+    </h4>
+  </div>
+
+  <div class="col-12 justify-content-center d-flex px-0">
+    <button
+      mat-flat-button
+      id="yes-button"
+      class="bg-info mr-2 text-light"
+      [mat-dialog-close]="true"
+    >
+      Có
+    </button>
+
+    <button
+      mat-flat-button
+      id="no-button"
+      class="bg-danger ml-2 text-light"
+      [mat-dialog-close]="false"
+    >
+      Không
+    </button>
+  </div>
+</div>

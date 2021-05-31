@@ -1,0 +1,167 @@
+<form class="py-2 px-2" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+  <div class="col-12 d-flex flex-wrap">
+    <div class="col-10">
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Nhập tên đồ uống"
+        formControlName="name"
+      />
+      <div role="alert" *ngIf="get('name').touched && get('name').invalid">
+        <small class="text-danger" *ngIf="get('name').errors.required"
+          >Bắt buộc phải nhập tên đồ uống</small
+        >
+        <small class="text-danger" *ngIf="get('name').errors.maxlength"
+          >Tên đồ uống quá dài</small
+        >
+      </div>
+    </div>
+
+    <div class="col-2 px-0">
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        placeholder="Nhập giá"
+        formControlName="price"
+      />
+      <div role="alert" *ngIf="get('price').touched && get('price').invalid">
+        <small class="text-danger" *ngIf="get('price').errors.required"
+          >Bắt buộc phải nhập giá</small
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-2 d-flex flex-wrap">
+    <div class="col-3">
+      <label>Chọn nhóm <span class="text-danger">*</span></label>
+      <select class="custom-select" formControlName="category">
+        <option value="Trà">Trà</option>
+        <option value="Cà phê">Cà phê</option>
+        <option value="Nước ép">Nước ép</option>
+        <option value="Đồ có cồn">Đồ có cồn</option>
+        <option value="Sữa chua">Sữa chua</option>
+      </select>
+      <div
+        role="alert"
+        *ngIf="get('category').touched && get('category').invalid"
+      >
+        <small class="text-danger" *ngIf="get('category').errors.required"
+          >Bắt buộc</small
+        >
+      </div>
+    </div>
+    <div class="col-9 px-0">
+      <label for="file">Chọn ảnh</label>
+      <input
+        formControlName="url"
+        class="form-control"
+        type="file"
+        (change)="upload($event)"
+        accept=".png,.jpg"
+      />
+    </div>
+  </div>
+  <div class="col-12 d-flex flex-wrap">
+    <div class="col-12 pr-0 my-2">
+      <textarea
+        class="w-100 form-control"
+        placeholder="Mô tả.."
+        formControlName="description"
+      >
+      </textarea>
+    </div>
+    <div class="col-8 my-1">
+      <label class="my-1" for="exampleInputPrice">Thêm nguyên liệu</label>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        fill="currentColor"
+        class="bi bi-plus-square ml-2 text-light bg-success"
+        viewBox="0 0 16 16"
+        (click)="addIngredient($event)"
+        style="cursor: pointer"
+      >
+        <path
+          d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+        />
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+        />
+      </svg>
+      <div formArrayName="ingredients" class="form-group">
+        <div
+          class="d-flex my-1"
+          *ngFor="let ingredient of ingredientControl.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <input
+            type="text"
+            class="form-control w-50"
+            name="name"
+            placeholder="tên nguyên liệu"
+            formControlName="name"
+          />
+          <input
+            type="number"
+            class="form-control w-25 mx-1"
+            name="quantity"
+            placeholder="số lượng"
+            formControlName="quantity"
+          />
+          <button
+            class="w-25 mx-1 btn btn-danger"
+            (click)="deleteIngredient(i, $event)"
+          >
+            X
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <small *ngIf="errorMessage.length > 1" class="text-danger">
+      {{ errorMessage }}</small
+    >
+    <div class="mt-3 col-12 px-0 d-flex justify-content-end">
+      <button
+        class="mx-1 bg-danger text-light"
+        mat-raised-button
+        (click)="cancel($event)"
+      >
+        Hủy
+      </button>
+      <button
+        *ngIf="data.editMode && !editMode"
+        class="mx-1 bg-primary text-light"
+        mat-raised-button
+        (click)="changeEditMode()"
+      >
+        Cập nhật
+      </button>
+      <button
+        *ngIf="!data.editMode"
+        class="mx-1 bg-primary text-white"
+        type="submit"
+        mat-raised-button
+        [disabled]="!menuForm.valid"
+        [class.disabled]="!menuForm.valid"
+      >
+        Thêm đồ uống
+      </button>
+      <button
+        *ngIf="editMode"
+        class="mx-1 bg-success text-white"
+        type="button"
+        (click)="updateDrink($event)"
+        mat-raised-button
+        [disabled]="!menuForm.valid"
+        [class.disabled]="!menuForm.valid"
+      >
+        Lưu
+      </button>
+    </div>
+  </div>
+</form>

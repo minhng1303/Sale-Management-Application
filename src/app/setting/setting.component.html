@@ -1,0 +1,102 @@
+<div class="container mx-auto w-50 bg-light py-3 my-3 rounded">
+  <form
+    class="my-3 w-75 mx-auto"
+    [formGroup]="profileForm"
+    (ngSubmit)="updateStaff()"
+  >
+    <div class="form-group col-sm-12">
+      <label for="inputName">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="account"
+        id="inputName"
+      />
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="inputName">Tên</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        id="inputName"
+      />
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="inputPhone">Số điện thoại</label>
+      <input
+        class="form-control"
+        type="number"
+        formControlName="phone"
+        id="inputPhone"
+      />
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="inputPhone">Địa chỉ</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="address"
+        id="inpuAddress"
+      />
+    </div>
+    <div class="d-flex align-items-center justify-content-between col-sm-12">
+      <select
+        class="form-select form-select-lg col-sm-4 p-2"
+        aria-label=".form-select-lg example"
+        formControlName="gender"
+      >
+        <option value="Male">Nam</option>
+        <option value="Female">Nữ</option>
+      </select>
+
+      <input
+        placeholder="Ngày sinh"
+        class="form-control col-sm-7"
+        type="date"
+        formControlName="dob"
+        id="inputDOB"
+      />
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="inputURL">Upload ảnh</label>
+      <input
+        formControlName="imageURL"
+        class="form-control"
+        type="file"
+        (change)="upload($event)"
+        accept=".png,.jpg"
+      />
+    </div>
+
+    <hr />
+    <div class="pl-3 w-100 row" *ngIf="editMode">
+      <button
+        type="submit"
+        mat-raised-button
+        class="btn bg-success mx-1 text-light ml-auto"
+      >
+        Lưu
+      </button>
+      <button
+        mat-raised-button
+        class="btn bg-danger mx-1 text-light"
+        (click)="goBack()"
+      >
+        Cancel
+      </button>
+    </div>
+    <div class="w-100 pr-0 row" *ngIf="!editMode">
+      <button
+        (click)="changeEditMode()"
+        mat-raised-button
+        class="btn bg-primary ml-auto text-light"
+      >
+        Cập nhật
+      </button>
+    </div>
+  </form>
+</div>

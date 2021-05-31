@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "isdapp-cb514"
+  },
+  "targets": {
+    "isdapp-cb514": {
+      "hosting": {
+        "Todo": [
+          "isdapp-cb514"
+        ]
+      }
+    }
+  }
+}
