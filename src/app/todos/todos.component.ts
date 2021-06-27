@@ -88,7 +88,8 @@ export class TodosComponent implements OnInit {
       return (
         new Date(order.date['seconds'] * 1000)
           .toDateString()
-          .substring(8, 10) == day &&
+          .substring(8, 10) ==
+          day + 1 &&
         new Date(order.date['seconds'] * 1000).getMonth() == month &&
         new Date(order.date['seconds'] * 1000).getFullYear() == year
       );

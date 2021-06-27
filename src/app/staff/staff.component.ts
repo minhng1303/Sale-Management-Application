@@ -133,8 +133,8 @@ export class StaffComponent implements OnInit {
     //     })
     //     return
     //   }
-    this.sortedStaff = this.staff.filter((item) => {
-      return item.name
+    this.sortedStaff = this.staff.filter((staff) => {
+      return staff.email
         .toLowerCase()
         .replace(/\s/g, '')
         .includes(this.nameValue.toLowerCase().replace(/\s/g, ''));

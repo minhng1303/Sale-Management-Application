@@ -9,22 +9,24 @@ import { StaffService } from '../services/StaffService/staff.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
   users = [];
-  constructor(private authservice: FirebaseService, 
-              public dialog: MatDialog, 
-              public dialogService: ConfirmDialogService,
-              private staffService: StaffService,
-              private spinner: NgxSpinnerService) { }
+  constructor(
+    private authservice: FirebaseService,
+    public dialog: MatDialog,
+    public dialogService: ConfirmDialogService,
+    private staffService: StaffService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.spinner.show();
     setTimeout(() => {
-      this.spinner.hide()
-    },500)
-    this.authservice.getAccount.forEach(item => {
+      this.spinner.hide();
+    }, 500);
+    this.authservice.getAccount.forEach((item) => {
       this.users = item;
     });
   }
@@ -33,22 +35,34 @@ export class RegistrationComponent implements OnInit {
     return this.dialogService.openConfirmDialog();
   }
 
-  async register(email,password) { 
-    this.openDialog.afterClosed().subscribe(res => {
+  async register(email, password) {
+    this.openDialog.afterClosed().subscribe((res) => {
       if (res) {
-        this.authservice.registerWithEmail(email,password);
-        this.staffService.addStaff(email);
-        this.authservice.deleteRegistration(email);
-        this.dialogService.openSuccessfulDialog();
+        this.authservice
+          .registerWithEmail(email, password)
+          .then((res) => {
+            this.authservice.deleteRegistration(email);
+            this.staffService.addStaff(email);
+            this.dialogService.openSuccessfulDialog();
+          })
+          .catch((err) => {
+            if (err.code == 'auth/email-already-in-use') {
+              this.staffService.addStaff(email);
+              this.authservice.addUser(email, password)
+              this.authservice.deleteRegistration(email);
+              this.dialogService.openSuccessfulDialog();
+              console.log('successful');
+            }
+          });
       }
-    })
+    });
   }
 
   deny(email) {
-    this.openDialog.afterClosed().subscribe(res => {
+    this.openDialog.afterClosed().subscribe((res) => {
       if (res) {
         this.authservice.deleteRegistration(email);
       }
-    }) 
+    });
   }
 }

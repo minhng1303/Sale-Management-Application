@@ -10,10 +10,12 @@ li a {
 
 div.dropdown::after {
   color: white;
+  /* transform: rotate(180deg); */
 }
 
 div.dropdown::selection {
   background-color: lightblue;
+  transform: rotate(180);
 }
 
 .dropdown-toggle::after {

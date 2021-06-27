@@ -15,6 +15,14 @@ ul.drinkrow:hover {
 a:hover {
   cursor: pointer;
 }
+.drink-card {
+  border-radius: 25px;
+}
+
+.drink-card:hover {
+  transform: scale(1.05);
+  transition: ease-in-out 0.3s;
+}
 .disabled {
   background-color: lightgray !important;
   color: white;

@@ -31,7 +31,7 @@ import {
   styleUrls: ['./menu.component.css'],
   animations: [
     trigger('fade', [
-      transition('void => *', [style({ opacity: 0 }), animate(800)]),
+      transition('void => *', [style({ opacity: 0 }), animate(300)]),
     ]),
   ],
 })
@@ -54,7 +54,6 @@ export class MenuComponent implements OnInit {
     private drinkService: DrinkService,
     private fb: FormBuilder,
     private confirmDialog: ConfirmDialogService,
-    private afStorage: AngularFireStorage,
     public auth: FirebaseService,
     private dialog: MatDialog
   ) {}
@@ -77,7 +76,7 @@ export class MenuComponent implements OnInit {
   }
 
   get ingredientControl() {
-    return <FormArray>this.menuForm.controls.ingredients;
+    return this.menuForm.controls.ingredients as FormArray;
   }
 
   clearErrorMessage() {

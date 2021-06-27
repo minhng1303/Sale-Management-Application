@@ -109,7 +109,7 @@
       </div>
       <div class="col-12 d-flex flex-wrap" style="min-height: 550px">
         <div
-          class="col-md-2 px-1 my-2 rounded"
+          class="col-md-2 px-1 my-2 drink-card"
           *ngFor="let drink of drinks"
           @fade
         >
@@ -117,8 +117,11 @@
             (click)="chooseDrink(drink)"
             (dblclick)="editDrink(drink, $event)"
             [class.active]="selectedDrink == drink"
+            class="rounded"
           >
-            <div class="card-body align-items-start d-flex flex-wrap p-0">
+            <div
+              class="card-body align-items-start d-flex flex-wrap p-0 rounded"
+            >
               <h6
                 class="
                   card-title
